@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Quote from './components/Quote';
 import RandomQuote from './components/RandomQuote';
 import AuthorQuotes from './components/AuthorQuotes';
@@ -47,7 +47,7 @@ const App = () => {
               )}
 
               {quote.author && (
-                <Link to={`/authors/${quote.authorSlug}`}>
+                <Link to={`/${quote.authorSlug}`}>
                   <button className="tacgia">
                     <div className="tacgia_name">
                       <p>{quote.author}</p>
@@ -66,7 +66,7 @@ const App = () => {
           }
         />
 
-        <Route path="/authors/:authorSlug" element={<AuthorQuotes author={quote.author} />} />
+        <Route path="/:authorSlug" element={<AuthorQuotes author={quote.author} />} />
       </Routes>
     </Router>
   );
